@@ -19,15 +19,3 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v6
-      
-      - name: Install hatch
-        run: uv tool install hatch
-      
-      - name: Run tests with UVX
-        run: uvx hatch run noop
-
-      - name: Run tests
-        run: hatch run noop
