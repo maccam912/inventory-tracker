@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest",
+    "test:unit": "vitest",
     "test:e2e": "playwright test --config=tests/playwright.config.ts",
     "lint": "eslint src tests --ext .ts,.tsx",
     "prepare": "npm run build"
