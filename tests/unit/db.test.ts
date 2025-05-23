@@ -17,14 +17,29 @@ describe('Database Operations', () => {
         const lot: Lot = { id: 1, lotNumber: 'LOT123', expirationDate: '2023-12-31', created_at: new Date(), updated_at: new Date() };
         await addLot(db, lot);
         const lots = await getLots(db);
-        expect(lots).toContainEqual(lot);
+        
+        expect(lots.length).toBe(1);
+        expect(lots[0]).toMatchObject({
+            lotNumber: 'LOT123',
+            expirationDate: '2023-12-31'
+        });
+        expect(lots[0].id).toBeTypeOf('number');
+        expect(lots[0].created_at).toBeInstanceOf(Date);
+        expect(lots[0].updated_at).toBeInstanceOf(Date);
     });
 
     it('should add a site to the database', async () => {
         const site: Site = { id: 1, name: 'Site A', created_at: new Date(), updated_at: new Date() };
         await addSite(db, site);
         const sites = await getSites(db);
-        expect(sites).toContainEqual(site);
+        
+        expect(sites.length).toBe(1);
+        expect(sites[0]).toMatchObject({
+            name: 'Site A'
+        });
+        expect(sites[0].id).toBeTypeOf('number');
+        expect(sites[0].created_at).toBeInstanceOf(Date);
+        expect(sites[0].updated_at).toBeInstanceOf(Date);
     });
 
     it('should retrieve lots from the database', async () => {

@@ -1,22 +1,22 @@
 export interface Lot {
     id: number;
     lotNumber: string;
-    expirationDate: Date;
-    createdAt: Date;
-    updatedAt: Date;
+    expirationDate: string;
+    created_at: Date;
+    updated_at: Date;
 }
 
 export interface Site {
     id: number;
     name: string;
-    createdAt: Date;
-    updatedAt: Date;
+    created_at: Date;
+    updated_at: Date;
 }
 
 export interface Inventory {
     lotId: number;
     siteId: number;
     units: number;
-    createdAt: Date;
-    updatedAt: Date;
+    created_at: Date;
+    updated_at: Date;
 }

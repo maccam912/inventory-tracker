@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
+import { configDefaults } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -8,5 +9,7 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'json', 'html'],
     },
+    include: ['tests/unit/**/*.test.ts'],
+    exclude: ['tests/e2e/**/*.spec.ts'],
   },
 });

@@ -1,6 +1,5 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import path from 'path';
-import { createConnection } from './db/index';
 
 const createMainWindow = () => {
     const mainWindow = new BrowserWindow({
@@ -17,7 +16,6 @@ const createMainWindow = () => {
 };
 
 app.on('ready', async () => {
-    await createConnection(); // Initialize the database connection
     createMainWindow();
 });
 
