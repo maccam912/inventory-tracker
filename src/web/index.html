@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <link rel="stylesheet" href="../renderer/styles.css">
+</head>
+<body x-data="{ lots: [], sites: [], selectedLot: null, selectedSite: null }">
+    <header>
+        <h1>Inventory Tracker</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Lots</h2>
+            <ul>
+                <template x-for="lot in lots" :key="lot.id">
+                    <li x-text="lot.lotNumber"></li>
+                </template>
+            </ul>
+        </section>
+        <section>
+            <h2>Sites</h2>
+            <ul>
+                <template x-for="site in sites" :key="site.id">
+                    <li x-text="site.name"></li>
+                </template>
+            </ul>
+        </section>
+        <section>
+            <h2>Inventory</h2>
+            <div>
+                <label for="lotSelect">Select Lot:</label>
+                <select id="lotSelect" x-model="selectedLot">
+                    <option value="" disabled>Select a lot</option>
+                    <template x-for="lot in lots" :key="lot.id">
+                        <option :value="lot.id" x-text="lot.lotNumber"></option>
+                    </template>
+                </select>
+            </div>
+            <div>
+                <label for="siteSelect">Select Site:</label>
+                <select id="siteSelect" x-model="selectedSite">
+                    <option value="" disabled>Select a site</option>
+                    <template x-for="site in sites" :key="site.id">
+                        <option :value="site.id" x-text="site.name"></option>
+                    </template>
+                </select>
+            </div>
+            <button @click="trackInventory">Track Inventory</button>
+        </section>
+    </main>
+    <script src="../web/index.js"></script>
+</body>
+</html>

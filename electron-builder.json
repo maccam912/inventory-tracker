@@ -1,0 +1,45 @@
+{
+  "appId": "com.example.inventorytracker",
+  "productName": "Inventory Tracker",
+  "files": [
+    "dist/**/*",
+    "src/**/*",
+    "package.json",
+    "node_modules/**/*"
+  ],
+  "directories": {
+    "output": "build"
+  },
+  "mac": {
+    "category": "public.app-category.utilities",
+    "target": [
+      "dmg",
+      "zip"
+    ]
+  },
+  "win": {
+    "target": [
+      "nsis",
+      "zip"
+    ]
+  },
+  "linux": {
+    "target": [
+      "AppImage",
+      "deb"
+    ]
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "your-github-username",
+    "repo": "inventory-tracker"
+  },
+  "electronVersion": "latest",
+  "asar": true,
+  "extraResources": [
+    {
+      "from": "path/to/your/resources",
+      "to": "resources"
+    }
+  ]
+}
