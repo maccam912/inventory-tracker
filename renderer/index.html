@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    
+  <script type="module" crossorigin src="/assets/main-9db4fb28.js"></script>
+  <link rel="stylesheet" href="/assets/index-587c7c01.css">
+</head>
+<body>
+    <div x-data="{ lots: [], sites: [], selectedLot: null }">
+        <h1>Inventory Tracker</h1>
+        <div>
+            <h2>Lots</h2>
+            <ul>
+                <template x-for="lot in lots" :key="lot.id">
+                    <li x-text="lot.lotNumber"></li>
+                </template>
+            </ul>
+        </div>
+        <div>
+            <h2>Sites</h2>
+            <ul>
+                <template x-for="site in sites" :key="site.id">
+                    <li x-text="site.name"></li>
+                </template>
+            </ul>
+        </div>
+        <div>
+            <h2>Inventory</h2>
+            <div x-show="selectedLot">
+                <h3 x-text="selectedLot.lotNumber"></h3>
+                <p>Expiration Date: <span x-text="selectedLot.expirationDate"></span></p>
+                <p>Units at Sites:</p>
+                <ul>
+                    <template x-for="site in sites" :key="site.id">
+                        <li x-text="site.name + ': ' + (selectedLot.units[site.id] || 0)"></li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
