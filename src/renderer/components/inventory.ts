@@ -38,9 +38,13 @@ export class Inventory {
         });
     }
 
-    private getUnitsAtSite(lotId: number, siteId: number): number {
+    private getUnitsAtSite(_lotId: number, _siteId: number): number {
         // Logic to retrieve the number of units for a given lot at a specific site
         // This is a placeholder; actual implementation will depend on the database structure
         return Math.floor(Math.random() * 100); // Temporary random value for demonstration
     }
+}
+
+export function createApp(): Inventory {
+    return new Inventory();
 }
