@@ -72,7 +72,7 @@ npm run test
 ```
 
 ## Deployment
-The application can be deployed to GitHub Pages using GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy.yml`.
+The application can be deployed to GitHub Pages using GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy-pages.yml`.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
