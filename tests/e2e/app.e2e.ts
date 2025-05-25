@@ -19,12 +19,13 @@ test.describe('Inventory Tracker E2E Tests', () => {
         await expect(lotList).toContainText('LOT123');
     });
 
-    test('should display site inventory', async ({ page }) => {
+    test('should add a new site', async ({ page }) => {
+        await page.click('button:text("Add New Site")');
         await page.fill('input[name="siteName"]', 'Site A');
-        await page.click('button#add-site'); // Assuming there's a button with id 'add-site'
+        await page.click('button#add-site');
         
-        const siteInventory = await page.locator('.site-inventory'); // Assuming there's a container for site inventory
-        await expect(siteInventory).toContainText('Site A');
+        const siteList = await page.locator('.site-list');
+        await expect(siteList).toContainText('Site A');
     });
 
     test('should show error for invalid lot number', async ({ page }) => {
