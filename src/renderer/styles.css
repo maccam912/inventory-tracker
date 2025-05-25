@@ -69,3 +69,40 @@ h2 {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+.form-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.site-management {
+    margin-bottom: 15px;
+}
+
+.site-list {
+    margin-top: 10px;
+}

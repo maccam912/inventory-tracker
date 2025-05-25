@@ -8,7 +8,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div x-data="{ lots: [], sites: [], selectedLot: null }">
+    <div x-data="{ 
+        lots: [], 
+        sites: [], 
+        selectedLot: null,
+        showAddSiteForm: false,
+        newSiteName: '',
+        addNewSite() {
+            const site = { name: this.newSiteName };
+            window.api.addSite(site).then(() => {
+                window.api.getSites().then(updatedSites => {
+                    this.sites = updatedSites;
+                    this.newSiteName = '';
+                    this.showAddSiteForm = false;
+                });
+            }).catch(error => {
+                console.error('Error adding site:', error);
+            });
+        }
+    }">
         <h1>Inventory Tracker</h1>
         <div>
             <h2>Lots</h2>
@@ -20,11 +38,27 @@
         </div>
         <div>
             <h2>Sites</h2>
-            <ul>
+            <div class="site-management">
+                <button class="button" @click="showAddSiteForm = true">Add New Site</button>
+            </div>
+            <ul class="site-list">
                 <template x-for="site in sites" :key="site.id">
                     <li x-text="site.name"></li>
                 </template>
             </ul>
+            <!-- Add Site Form -->
+            <div x-show="showAddSiteForm" class="form-container">
+                <form @submit.prevent="addNewSite">
+                    <div class="form-group">
+                        <label for="siteName">Site Name:</label>
+                        <input type="text" id="siteName" name="siteName" x-model="newSiteName" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="add-site" class="button">Add Site</button>
+                        <button type="button" class="button" @click="showAddSiteForm = false">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <div>
             <h2>Inventory</h2>

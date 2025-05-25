@@ -22,11 +22,27 @@
         </section>
         <section>
             <h2>Sites</h2>
-            <ul>
+            <div class="site-management">
+                <button class="button" @click="showAddSiteForm = true">Add New Site</button>
+            </div>
+            <ul class="site-list">
                 <template x-for="site in sites" :key="site.id">
                     <li x-text="site.name"></li>
                 </template>
             </ul>
+            <!-- Add Site Form -->
+            <div x-show="showAddSiteForm" class="form-container">
+                <form @submit.prevent="addNewSite">
+                    <div class="form-group">
+                        <label for="siteName">Site Name:</label>
+                        <input type="text" id="siteName" name="siteName" x-model="newSiteName" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="add-site" class="button">Add Site</button>
+                        <button type="button" class="button" @click="showAddSiteForm = false">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </section>
         <section>
             <h2>Inventory</h2>
