@@ -12,6 +12,7 @@ Alpine.data('inventory', () => ({
     lots: [],
     sites: [],
     selectedLot: null,
+    selectedSite: null,
     showAddSiteForm: false,
     newSiteName: '',
     addNewSite() {
@@ -24,6 +25,14 @@ Alpine.data('inventory', () => ({
             });
         }).catch(error => {
             console.error('Error adding site:', error);
+        });
+    },
+    init() {
+        // Load initial data
+        getSites().then(sites => {
+            this.sites = sites;
+        }).catch(error => {
+            console.error('Error loading sites:', error);
         });
     }
 }));

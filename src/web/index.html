@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
     <link rel="stylesheet" href="../renderer/styles.css">
 </head>
-<body x-data="{ lots: [], sites: [], selectedLot: null, selectedSite: null }">
+<body x-data="inventory">
     <header>
         <h1>Inventory Tracker</h1>
     </header>
@@ -67,6 +67,6 @@
             <button @click="trackInventory">Track Inventory</button>
         </section>
     </main>
-    <script src="../web/index.js"></script>
+    <script type="module" src="./index.ts"></script>
 </body>
 </html>
