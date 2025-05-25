@@ -1,41 +1,45 @@
-import { createStore } from 'drizzle-orm/sqlite';
 import { Lot, Site } from '../shared/types';
 
-// Temporary in-memory database for web version
-const db = createStore({
-  lots: {
-    id: 'number',
-    lotNumber: 'string',
-    expirationDate: 'string',
-    createdAt: 'date',
-    updatedAt: 'date',
-  },
-  sites: {
-    id: 'number',
-    name: 'string',
-    createdAt: 'date',
-    updatedAt: 'date',
-  },
-});
+// Simple in-memory database for web version
+const db = {
+  lots: [] as any[],
+  sites: [] as any[],
+  nextLotId: 1,
+  nextSiteId: 1
+};
 
 // Function to add a lot
 export const addLot = async (lot: Lot) => {
-  await db.lots.insert(lot);
+  const newLot = { 
+    ...lot, 
+    id: db.nextLotId++, 
+    createdAt: new Date(), 
+    updatedAt: new Date() 
+  };
+  db.lots.push(newLot);
+  return newLot;
 };
 
 // Function to add a site
 export const addSite = async (site: Site) => {
-  await db.sites.insert(site);
+  const newSite = { 
+    ...site, 
+    id: db.nextSiteId++, 
+    createdAt: new Date(), 
+    updatedAt: new Date() 
+  };
+  db.sites.push(newSite);
+  return newSite;
 };
 
 // Function to get all lots
 export const getLots = async () => {
-  return await db.lots.findAll();
+  return db.lots;
 };
 
 // Function to get all sites
 export const getSites = async () => {
-  return await db.sites.findAll();
+  return db.sites;
 };
 
 // Function to get inventory by site
