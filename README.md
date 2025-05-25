@@ -35,6 +35,7 @@ inventory-tracker
 ├── electron-builder.json    # Electron build configuration
 ├── vite.config.ts          # Vite configuration
 ├── vitest.config.ts        # Vitest configuration
+├── copilot-instructions.md # Testing requirements and guidelines
 └── README.md               # Project documentation
 ```
 
@@ -75,7 +76,9 @@ npm run test
 The application can be deployed to GitHub Pages using GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy-pages.yml`.
 
 ## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes. 
+
+Before submitting a pull request, please review the [Copilot Instructions](copilot-instructions.md) for guidelines on testing requirements.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
