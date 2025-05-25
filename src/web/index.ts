@@ -1,10 +1,5 @@
-import { createApp } from 'vue';
 import Alpine from 'alpinejs';
-import { createRouter, createWebHistory } from 'vue-router';
-import Inventory from '../renderer/components/inventory';
 import { addSite, getSites } from './db-web';
-
-const app = createApp({});
 
 // Set up Alpine.js
 window.Alpine = Alpine;
@@ -38,20 +33,3 @@ Alpine.data('inventory', () => ({
 }));
 
 Alpine.start();
-
-// Define routes
-const routes = [
-    { path: '/', component: Inventory },
-];
-
-// Create router
-const router = createRouter({
-    history: createWebHistory(),
-    routes,
-});
-
-// Use router
-app.use(router);
-
-// Mount the app
-app.mount('#app');
